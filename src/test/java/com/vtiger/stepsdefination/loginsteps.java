@@ -94,8 +94,22 @@ public class loginsteps {
     @Then("Lead should be created successfully")
     public void Lead_successfully() {
 
-        driver.findElement(By.xpath("//td[text()='Last Name:']/following::td[text()='modi']")).isDisplayed();
-        driver.findElement(By.xpath("//td[text()='Company:']/following::td[text()='bjp']")).isDisplayed();
+        driver.findElement(By.xpath("//td[text()='Last Name:']/following::td[text()='Modi']")).isDisplayed();
+        driver.findElement(By.xpath("//td[text()='Company:']/following::td[text()='BJP']")).isDisplayed();
+
+    }
+
+    @When("fill mandatory fields lastname {string} and company {string} click save button")
+    public void fill_mandatory_fields_lastname_and_company_click_save_button(String lname, String comp) {
+        driver.findElement(By.name("lastname")).sendKeys(lname);
+        driver.findElement(By.name("company")).sendKeys(comp);
+        driver.findElement(By.name("button")).click();
+    }
+
+    @Then("Lead should be created successfully with lastname {string} and company {string}")
+    public void lead_should_be_created_successfully_with_lastname_and_company(String lname, String comp) {
+        driver.findElement(By.xpath("//td[text()='Last Name:']/following::td[text()='"+lname+"']")).isDisplayed();
+        driver.findElement(By.xpath("//td[text()='Company:']/following::td[text()='"+comp+"']")).isDisplayed();
 
     }
 
