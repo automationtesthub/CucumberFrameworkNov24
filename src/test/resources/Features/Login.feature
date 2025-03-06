@@ -1,8 +1,9 @@
+@tg1
 Feature: login functionality
 
   Background:
     Given user should be on login
-
+  @modi
   Scenario: valid login
     When user enters valid credentilas
     Then user should navigated to home page
